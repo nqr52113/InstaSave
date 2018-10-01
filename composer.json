@@ -1,15 +1,11 @@
 {
-    "name": "alishafiee/insta-save",
+    "name": "alishafiee/instasave",
     "type": "library",
     "require": {
         "illuminate/support": "^5.7",
-        "alshf/footman": "^1.3",
         "symfony/dom-crawler": "^4.1",
-        "symfony/css-selector": "^4.1"
-    },
-    "require-dev": {
-        "symfony/var-dumper": "^4.1",
-        "symfony/console": "^4.1"
+        "symfony/css-selector": "^4.1",
+        "alshf/footman": "^1.3"
     },
     "license": "MIT",
     "authors": [
@@ -19,6 +15,7 @@
         }
     ],
     "autoload": {
+        "files": ["engine/Helpers/Functions.php"],
         "psr-4": {
             "InstaSave\\": "engine/"
         }
