@@ -15,7 +15,6 @@
         }
     ],
     "autoload": {
-        "files": ["engine/Helpers/Functions.php"],
         "psr-4": {
             "InstaSave\\": "engine/"
         }
