@@ -25,6 +25,7 @@ class InstaSave {
 		$provider = new ResponseProvider($result);
 
 		$class = 'InstaSave\\Response\\Entity\\' . ucfirst($provider->type);
+		
 		$response = new $class($provider);
 
 		$response->make();

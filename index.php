@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use InstaSave\InstaSave;
 use InstaSave\URL\URL;
 
-$url = new URL('https://www.instagram.com/arash.taheri.24/');
+$url = new URL('https://www.instagram.com/p/BojcMyygiT7/?explore=true');
 $instaSave = new InstaSave($url);
 
 $response = $instaSave->fetch();

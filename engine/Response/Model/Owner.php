@@ -12,6 +12,6 @@ class Owner {
 		$this->id = $owner->id;
 		$this->username = $owner->username;
 		$this->fullname = $owner->full_name;
-		$this->avator = $owner->profile_pic_url_hd ?: $owner->profile_pic_url;
+		$this->avator = isset($owner->profile_pic_url_hd) ? $owner->profile_pic_url_hd : $owner->profile_pic_url;
 	}
 }

@@ -21,7 +21,7 @@ class Video {
 		$this->dimensions = new Dimension($video->dimensions);
 		$this->thumbnail = $video->display_url;
 		$this->video = $video->video_url;
-		$this->duration = $video->video_duration;
+		$this->duration = isset($video->video_duration) ? $video->video_duration : 0;
 		$this->views = $video->video_view_count;
 	}
 }
