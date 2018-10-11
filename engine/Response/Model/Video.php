@@ -4,6 +4,8 @@ namespace InstaSave\Response\Model;
 
 use InstaSave\Enumeration\Resource;
 use InstaSave\Response\Model\Dimension;
+use InstaSave\Response\Provider\ModelCollector;
+use InstaSave\Response\Provider\ResponseProvider as Collector;
 
 class Video {
 	public $id;
@@ -15,13 +17,13 @@ class Video {
 	public $views;
 	public $type = Resource::video;
 
-	public function __construct($video) {
-		$this->id = $video->id;
-		$this->shortcode = $video->shortcode;
-		$this->dimensions = new Dimension($video->dimensions);
-		$this->thumbnail = $video->display_url;
-		$this->video = $video->video_url;
-		$this->duration = isset($video->video_duration) ? $video->video_duration : 0;
-		$this->views = $video->video_view_count;
+	public function __construct(Collector $video) {
+		$this->id = $video->getId();
+		$this->shortcode = $video->getShortcode();
+		$this->dimensions = new Dimension(new ModelCollector($video->getDimensions()));
+		$this->thumbnail = $video->getDisplayUrl();
+		$this->video = $video->getVideoUrl();
+		$this->duration = (int) $video->getVideoDuration();
+		$this->views = $video->getVideoViewCount();
 	}
 }

@@ -2,16 +2,18 @@
 
 namespace InstaSave\Response\Model;
 
+use InstaSave\Response\Provider\ResponseProvider as Collector;
+
 class Owner {
 	public $id;
 	public $username;
 	public $fullname;
 	public $avator;
 
-	public function __construct($owner) {
-		$this->id = $owner->id;
-		$this->username = $owner->username;
-		$this->fullname = $owner->full_name;
-		$this->avator = isset($owner->profile_pic_url_hd) ? $owner->profile_pic_url_hd : $owner->profile_pic_url;
+	public function __construct(Collector $owner) {
+		$this->id = $owner->getId();
+		$this->username = $owner->getUsername();
+		$this->fullname = $owner->getFullName();
+		$this->avator = $owner->getProfilePicUrlHd() ?: $owner->getProfilePicUrl();
 	}
 }

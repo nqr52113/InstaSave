@@ -4,6 +4,8 @@ namespace InstaSave\Response\Model;
 
 use InstaSave\Enumeration\Resource;
 use InstaSave\Response\Model\Dimension;
+use InstaSave\Response\Provider\ModelCollector;
+use InstaSave\Response\Provider\ResponseProvider as Collector;
 
 class Image {
 	public $id;
@@ -12,10 +14,10 @@ class Image {
 	public $thumbnail;
 	public $type = Resource::image;
 
-	public function __construct($image) {
-		$this->id = $image->id;
-		$this->shortcode = $image->shortcode;
-		$this->dimensions = new Dimension($image->dimensions);
-		$this->thumbnail = $image->display_url;
+	public function __construct(Collector $image) {
+		$this->id = $image->getId();
+		$this->shortcode = $image->getShortcode();
+		$this->dimensions = new Dimension(new ModelCollector($image->getDimensions()));
+		$this->thumbnail = $image->getDisplayUrl();
 	}
 }

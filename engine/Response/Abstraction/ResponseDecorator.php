@@ -16,5 +16,5 @@ abstract class ResponseDecorator implements Response, JsonSerializable {
 		return $this;
 	}
 
-	abstract public function make();
+	abstract public function parse();
 }

@@ -3,9 +3,9 @@
 namespace InstaSave;
 
 use InstaSave\Client\Client;
-use InstaSave\Response\ResponseProvider;
 use InstaSave\URL\Abstraction\URLProvider;
 use InstaSave\Client\Abstraction\ClientProvider;
+use InstaSave\Response\Provider\EntityCollector;
 
 class InstaSave {
 	
@@ -20,16 +20,10 @@ class InstaSave {
 	}
 
 	public function fetch() {
-		$result = $this->client->send();
-
-		$provider = new ResponseProvider($result);
+		$provider = new EntityCollector($this->client->send());
 
 		$class = 'InstaSave\\Response\\Entity\\' . ucfirst($provider->type);
-		
-		$response = new $class($provider);
 
-		$response->make();
-
-		return $response;
+		return (new $class($provider))->parse();
 	}
 }

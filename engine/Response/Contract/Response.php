@@ -3,5 +3,5 @@
 namespace InstaSave\Response\Contract;
 
 interface Response {
-	public function make();
+	public function parse();
 }

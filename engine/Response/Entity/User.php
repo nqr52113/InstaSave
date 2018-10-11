@@ -2,15 +2,14 @@
 
 namespace InstaSave\Response\Entity;
 
-use InstaSave\Response\Model\Owner;
-use InstaSave\Response\Traits\OwnerProvisioner as OwnerHandler;
-use InstaSave\Response\Traits\UserProvisioner as UserHandler;
+use InstaSave\Response\Traits\OwnerParser;
+use InstaSave\Response\Traits\UserParser;
 use InstaSave\Response\Abstraction\ResponseDecorator;
 
 class User extends ResponseDecorator {
-	use UserHandler, OwnerHandler;
+	use OwnerParser, UserParser;
 
-	public function make() {
-		$this->setUser()->setOwner();
+	public function parse() {
+		return $this->user()->owner();
 	}
 }
