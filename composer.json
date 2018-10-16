@@ -1,22 +1,30 @@
 {
-    "name": "alishafiee/instasave",
+    "name": "alshf/instasave",
     "type": "library",
+    "description": "Save any resources from Instagram",
+    "keywords" : ["Instagram", "InstaSave", "JSON", "Download", "Footman", "Video", "Image", "ProfilePicture", "IGTV", "Feed", "Playlist"],
+    "homepage": "https://github.com/alshf89/footman",
     "require": {
+        "php": ">=7.0",
         "illuminate/support": "^5.7",
         "symfony/dom-crawler": "^4.1",
         "symfony/css-selector": "^4.1",
-        "alshf/footman": "^1.3"
+        "alshf/footman": "^1.4"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Ali Shafiee",
-            "email": "alshf89@gmail.com"
+            "email": "alshf89@gmail.com",
+            "role": "developer"
         }
     ],
     "autoload": {
         "psr-4": {
             "InstaSave\\": "engine/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6"
     }
 }

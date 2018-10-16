@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 7.0
+
+env:
+  - illuminateVersion="^5.7"
+  - domCrawlerVersion="^4.1"
+  - cssSelectorVersion="^4.1"
+  - footmanVersion="^1.3"
+
+install:
+   - composer require illuminate/support:${illuminateVersion}
+   - composer require symfony/dom-crawler:${domCrawlerVersion}
+   - composer require symfony/css-selector:${cssSelectorVersion}
+   - composer require alshf/footman:${footmanVersion}
+   - php vendor/autoload.php

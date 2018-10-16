@@ -45,7 +45,9 @@ abstract class ClientProvider {
 
 	private function getOptions() {
 		return collect([
-	        'allow_redirects' => true,
+			// Prevent Redirect bcuz on private feed it redirect to the user profile
+			// So instead of no response we get profile type response.
+	        'allow_redirects' => false,
 	        'cookies' => [
 	            'share' => true,
 	            'type' => 'file',
