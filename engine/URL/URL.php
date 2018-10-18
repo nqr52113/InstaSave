@@ -2,8 +2,8 @@
 
 namespace InstaSave\URL;
 
-use InstaSave\URL\Abstraction\URLProvider;
 use InstaSave\Exception\URLValidationException;
+use InstaSave\URL\Abstraction\URLProvider;
 
 class URL extends URLProvider
 {
@@ -12,7 +12,8 @@ class URL extends URLProvider
      *
      * @return URLValidationException
      */
-    protected function validate() {
+    protected function validate()
+    {
         $pattern = '/^(http|https)\:\/\/(www\.)*?instagram.com(\/[\w\+\=\?\&\/\.\-]+)$/i';
 
         if (!preg_match($pattern, $this->absoluteUrl)) {

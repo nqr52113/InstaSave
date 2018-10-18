@@ -2,8 +2,8 @@
 
 namespace InstaSave\Exception;
 
-use \Exception;
+use Exception;
 
-class ResponseException extends Exception 
+class ResponseException extends Exception
 {
 }

@@ -2,9 +2,9 @@
 
 namespace InstaSave\Response\Entity;
 
+use InstaSave\Response\Abstraction\ResponseDecorator;
 use InstaSave\Response\Traits\OwnerParser;
 use InstaSave\Response\Traits\UserParser;
-use InstaSave\Response\Abstraction\ResponseDecorator;
 
 class User extends ResponseDecorator
 {
@@ -15,7 +15,8 @@ class User extends ResponseDecorator
      *
      * @return User
      */
-    public function parse() {
+    public function parse()
+    {
         return $this->user()->owner();
     }
 }

@@ -25,7 +25,8 @@ class Dimension
      *
      * @param Collector $dimensions
      */
-    public function __construct(Collector $dimensions) {
+    public function __construct(Collector $dimensions)
+    {
         $this->width = $dimensions->getWidth();
         $this->height = $dimensions->getHeight();
     }

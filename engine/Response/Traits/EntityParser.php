@@ -68,7 +68,8 @@ trait EntityParser
      *
      * @return InstaSave\Response\Abstraction\ResponseDecorator
      */
-    private function entity() {
+    private function entity()
+    {
         $this->id = $this->provider->getId();
         $this->type = $this->provider->type;
         $this->shortcode = $this->provider->getShortcode();

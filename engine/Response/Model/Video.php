@@ -3,11 +3,10 @@
 namespace InstaSave\Response\Model;
 
 use InstaSave\Enumeration\Resource;
-use InstaSave\Response\Model\Dimension;
 use InstaSave\Response\Provider\ModelCollector;
 use InstaSave\Response\Provider\ResponseProvider as Collector;
 
-class Video 
+class Video
 {
     /**
      * Resource ID.
@@ -61,7 +60,7 @@ class Video
     /**
      * Resource Type.
      *
-     * @var Resource
+     * @var resource
      */
     public $type = Resource::video;
 
@@ -70,7 +69,8 @@ class Video
      *
      * @param Collector $video
      */
-    public function __construct(Collector $video) {
+    public function __construct(Collector $video)
+    {
         $this->id = $video->getId();
         $this->shortcode = $video->getShortcode();
         $this->dimensions = new Dimension(new ModelCollector($video->getDimensions()));

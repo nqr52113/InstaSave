@@ -2,8 +2,6 @@
 
 namespace InstaSave\Response\Provider;
 
-use InstaSave\Response\Provider\ResponseProvider;
-
 class ModelCollector extends ResponseProvider
 {
     /**
@@ -11,7 +9,8 @@ class ModelCollector extends ResponseProvider
      *
      * @param object $entity
      */
-    public function __construct($entity) {
+    public function __construct($entity)
+    {
         $this->entity = $entity;
     }
 }

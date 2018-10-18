@@ -1,17 +1,18 @@
 <?php
+
 namespace InstaSave\Client\Abstraction;
 
 use Alshf\Footman;
 use Alshf\Response;
-use InstaSave\URL\Abstraction\URLProvider;
 use InstaSave\Exception\ClientException;
+use InstaSave\URL\Abstraction\URLProvider;
 use Symfony\Component\DomCrawler\Crawler;
 
 abstract class ClientProvider
 {
     /**
      * Footman Client that send All requests.
-     * 
+     *
      * @var Alshf\Footman
      */
     protected $client;
@@ -35,7 +36,8 @@ abstract class ClientProvider
      *
      * @param URLProvider $url
      */
-    public function __construct(URLProvider $url) {
+    public function __construct(URLProvider $url)
+    {
         $this->url = $url;
 
         $this->options = $this->getOptions();
@@ -48,7 +50,8 @@ abstract class ClientProvider
      *
      * @return object | ClientException
      */
-    public function send() {
+    public function send()
+    {
         try {
             // Send Response to Instagram with GET request
             $response = $this->client->request(function ($request) {
@@ -80,27 +83,29 @@ abstract class ClientProvider
      *
      * @return Illuminate\Support\Collection
      */
-    private function getOptions() {
+    private function getOptions()
+    {
         return collect([
             // Prevent Redirect bcuz on private feed it redirect to the user profile
             // So instead of no response we get profile type response
             'allow_redirects' => false,
-            'cookies' => [
-                'share' => true,
-                'type' => 'file',
-                'store_session_cookies' => true
-            ]
+            'cookies'         => [
+                'share'                 => true,
+                'type'                  => 'file',
+                'store_session_cookies' => true,
+            ],
         ])->merge($this->modifyOptions());
     }
 
     /**
      * Find JSON from Instagram Response and decode it to object.
      *
-     * @param  Response $response
+     * @param Response $response
      *
      * @return object
      */
-    private function resolve(Response $response) {
+    private function resolve(Response $response)
+    {
         $crawler = new Crawler($response->getContents());
 
         $scripts = $crawler->filter('script')->each(function (Crawler $node, $i) {
@@ -116,9 +121,10 @@ abstract class ClientProvider
     /**
      * Check Footman Client needs cookies_name or not.
      *
-     * @return boolean
+     * @return bool
      */
-    private function requestNeedsCookieFile() {
+    private function requestNeedsCookieFile()
+    {
         $cookies = collect($this->options->get('cookies'));
 
         return $cookies->has('type') && strtolower($cookies->get('type')) === 'file';

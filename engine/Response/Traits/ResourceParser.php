@@ -2,9 +2,9 @@
 
 namespace InstaSave\Response\Traits;
 
-use InstaSave\Response\Model\Video;
-use InstaSave\Response\Model\Image;
 use InstaSave\Exception\ResponseException;
+use InstaSave\Response\Model\Image;
+use InstaSave\Response\Model\Video;
 use InstaSave\Response\Provider\ModelCollector;
 
 trait ResourceParser
@@ -21,10 +21,11 @@ trait ResourceParser
      *
      * @return InstaSave\Response\Abstraction\ResponseDecorator | ResponseException
      */
-    private function resources() {
+    private function resources()
+    {
         // if the Entity was Playlist then it will get all Videos and Images array
         $resources = $this->provider->get('edgeSidecarToChildren.edges') ?: [];
-        
+
         foreach ($resources as $resource) {
             if (!isset($resource->node->is_video)) {
                 continue;
@@ -34,7 +35,7 @@ trait ResourceParser
                 $this->resources[] = new Video(new ModelCollector($resource->node));
                 continue;
             }
-            
+
             $this->resources[] = new Image(new ModelCollector($resource->node));
         }
 

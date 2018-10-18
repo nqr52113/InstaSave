@@ -3,9 +3,8 @@
 namespace InstaSave\Response\Provider;
 
 use InstaSave\Enumeration\Entity;
-use InstaSave\Response\Contract\Response;
 use InstaSave\Exception\ResponseException;
-use InstaSave\Response\Provider\ResponseProvider;
+use InstaSave\Response\Contract\Response;
 
 class EntityCollector extends ResponseProvider implements Response
 {
@@ -28,7 +27,8 @@ class EntityCollector extends ResponseProvider implements Response
      *
      * @param string $response
      */
-    public function __construct($response) {
+    public function __construct($response)
+    {
         $this->response = $response;
 
         $this->parse();
@@ -38,7 +38,8 @@ class EntityCollector extends ResponseProvider implements Response
      * Parse object that comes from Instagram Response to InstaSave Entity Classes.
      * We use this method to detect Type and find Response Entity.
      */
-    public function parse() {
+    public function parse()
+    {
         $this->entity = $this->findEntity();
         $this->type = $this->predictType();
     }
@@ -48,7 +49,8 @@ class EntityCollector extends ResponseProvider implements Response
      *
      * @return object | ResponseException
      */
-    private function findEntity() {
+    private function findEntity()
+    {
         if (isset($this->response->entry_data->PostPage[0]->graphql->shortcode_media)) {
             return $this->response->entry_data->PostPage[0]->graphql->shortcode_media;
         }
@@ -65,7 +67,8 @@ class EntityCollector extends ResponseProvider implements Response
      *
      * @return Entity | ResponseException
      */
-    private function predictType() {
+    private function predictType()
+    {
         if (isset($this->entity->username)) {
             return Entity::user;
         }

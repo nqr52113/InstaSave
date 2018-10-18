@@ -14,9 +14,10 @@ abstract class URLProvider
     /**
      * Constructor of URL.
      *
-     * @param String $url
+     * @param string $url
      */
-    public function __construct(String $url) {
+    public function __construct(String $url)
+    {
         $this->absoluteUrl = $url;
 
         $this->validate();
