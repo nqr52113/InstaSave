@@ -1,0 +1,34 @@
+{
+    "id":"1806097553666903266",
+    "type":"igtv",
+    "shortcode":"BkQjCfsBIzi",
+    "dimensions":{
+        "width":1080,
+        "height":1932
+    },
+    "comments":2498,
+    "likes":34109,
+    "postedAt":1529524292,
+    "description":"Look back at Instagram co-founder and CEO Kevin Systrom (@kevin) introduce IGTV from a live event in San Francisco.",
+    "owner":{
+        "id":"25025320",
+        "username":"instagram",
+        "fullname":"Instagram",
+        "avator":"https:\/\/scontent-lga3-1.cdninstagram.com\/vp\/95202b437094fb6f9007f5599a850d7d\/5C64245B\/t51.2885-19\/s150x150\/14719833_310540259320655_1605122788543168512_a.jpg"
+    },
+    "resources":[
+        {
+            "id":"1806097553666903266",
+            "shortcode":"BkQjCfsBIzi",
+            "dimensions":{
+                "width":1080,
+                "height":1932
+            },
+            "thumbnail":"https:\/\/scontent-lga3-1.cdninstagram.com\/vp\/0b91d7d5bd340aafd110aa77db6a193d\/5BCAD273\/t51.2885-15\/fr\/e15\/p1080x1080\/34457000_2079693292311064_7909942227097354240_n.jpg",
+            "video":"https:\/\/scontent-lga3-1.cdninstagram.com\/vp\/697624d94c6b3500efa5b955e9bc35e8\/5BCA98D2\/t50.16885-16\/10000000_1760663964018792_716207142595461120_n.mp4",
+            "duration":1040,
+            "views":1651954,
+            "type":"video"
+        }
+    ]
+}
