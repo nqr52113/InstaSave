@@ -4,16 +4,45 @@ namespace InstaSave\Response\Model;
 
 use InstaSave\Response\Provider\ResponseProvider as Collector;
 
-class Owner {
-	public $id;
-	public $username;
-	public $fullname;
-	public $avator;
+class Owner
+{
+    /**
+     * Owner Id.
+     *
+     * @var int
+     */
+    public $id;
 
-	public function __construct(Collector $owner) {
-		$this->id = $owner->getId();
-		$this->username = $owner->getUsername();
-		$this->fullname = $owner->getFullName();
-		$this->avator = $owner->getProfilePicUrlHd() ?: $owner->getProfilePicUrl();
-	}
+    /**
+     * Owner Username.
+     *
+     * @var string
+     */
+    public $username;
+
+    /**
+     * Owner Full name.
+     *
+     * @var string
+     */
+    public $fullname;
+
+    /**
+     * Owner Avator.
+     *
+     * @var string
+     */
+    public $avator;
+
+    /**
+     * Owner Constructor.
+     *
+     * @param Collector $owner
+     */
+    public function __construct(Collector $owner) {
+        $this->id = $owner->getId();
+        $this->username = $owner->getUsername();
+        $this->fullname = $owner->getFullName();
+        $this->avator = $owner->getProfilePicUrlHd() ?: $owner->getProfilePicUrl();
+    }
 }

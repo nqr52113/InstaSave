@@ -7,17 +7,52 @@ use InstaSave\Response\Model\Dimension;
 use InstaSave\Response\Provider\ModelCollector;
 use InstaSave\Response\Provider\ResponseProvider as Collector;
 
-class Image {
-	public $id;
-	public $shortcode;
-	public $dimensions;
-	public $thumbnail;
-	public $type = Resource::image;
+class Image 
+{
+    /**
+     * Resource ID.
+     *
+     * @var int
+     */
+    public $id;
 
-	public function __construct(Collector $image) {
-		$this->id = $image->getId();
-		$this->shortcode = $image->getShortcode();
-		$this->dimensions = new Dimension(new ModelCollector($image->getDimensions()));
-		$this->thumbnail = $image->getDisplayUrl();
-	}
+    /**
+     * Resource Shortcode.
+     *
+     * @var string
+     */
+    public $shortcode;
+
+    /**
+     * Resource Dimenstions.
+     *
+     * @var Dimension
+     */
+    public $dimensions;
+
+    /**
+     * Resource Thumbnail.
+     *
+     * @var string
+     */
+    public $thumbnail;
+
+    /**
+     * Resource Type.
+     *
+     * @var Resource
+     */
+    public $type = Resource::image;
+
+    /**
+     * Resource Constructor.
+     *
+     * @param Collector $image
+     */
+    public function __construct(Collector $image) {
+        $this->id = $image->getId();
+        $this->shortcode = $image->getShortcode();
+        $this->dimensions = new Dimension(new ModelCollector($image->getDimensions()));
+        $this->thumbnail = $image->getDisplayUrl();
+    }
 }

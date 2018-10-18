@@ -7,10 +7,16 @@ use InstaSave\Response\Traits\OwnerParser;
 use InstaSave\Response\Traits\ResourceParser;
 use InstaSave\Response\Abstraction\ResponseDecorator;
 
-class Feed extends ResponseDecorator {
-	use EntityParser, OwnerParser, ResourceParser;
+class Feed extends ResponseDecorator
+{
+    use EntityParser, OwnerParser, ResourceParser;
 
-	public function parse() {
-		return $this->entity()->owner()->resources();
-	}
+    /**
+     * Parse object that comes from Instagram Response to Feed Object.
+     *
+     * @return Feed
+     */
+    public function parse() {
+        return $this->entity()->owner()->resources();
+    }
 }

@@ -4,40 +4,80 @@ namespace InstaSave\Enumeration\Abstraction;
 
 use ReflectionClass;
 
-abstract class Enumeration {
-	static protected $constants;
+abstract class Enumeration
+{
+    /**
+     * Contains all Constants of Enumeration.
+     *
+     * @var Illuminate\Support\Collection
+     */
+    static protected $constants;
 
-	static public function valueOf($key) {
-		if (!static::isValidKey($key)) {
-			return null;
-		}
+    /**
+     * Get value of the Enum.
+     *
+     * @param  string $key
+     *
+     * @return string
+     */
+    static public function valueOf($key) {
+        if (!static::isValidKey($key)) {
+            return null;
+        }
 
-		return self::getConstants()->get($key);
-	}
+        return self::getConstants()->get($key);
+    }
 
-	static public function keyOf($value) {
-		if (!static::isValidValue($value)) {
-			return null;
-		}
+    /**
+     * Get Enum name of the Value.
+     *
+     * @param  string $value
+     *
+     * @return string
+     */
+    static public function keyOf($value) {
+        if (!static::isValidValue($value)) {
+            return null;
+        }
 
-		return self::getConstants()->search($value, true);
-	}
+        return self::getConstants()->search($value, true);
+    }
 
-	static public function isValidKey($key) {
-		return self::getConstants()->has($key);
-	}
+    /**
+     * Check this Enum exist.
+     *
+     * @param  string  $key
+     *
+     * @return boolean
+     */
+    static public function isValidKey($key) {
+        return self::getConstants()->has($key);
+    }
 
-	static public function isValidValue($value) {
-		return self::getConstants()->containsStrict($value);
-	}
+    /**
+     * Check this value exist in Enums.
+     * 
+     * @param  string  $value
+     *
+     * @return boolean
+     */
+    static public function isValidValue($value) {
+        return self::getConstants()->containsStrict($value);
+    }
 
-	static private function getConstants() {
-		if (!static::$constants) {
-			$reflect = new ReflectionClass(static::class);
+    /**
+     * Find all Enums and their value and store them as a Collection.
+     *
+     * @return Illuminate\Support\Collection
+     */
+    static private function getConstants() {
+        if (!static::$constants) {
+            // Get all Constants with Reflection
+            $reflect = new ReflectionClass(static::class);
 
-			return collect($reflect->getConstants());
-		}
+            return collect($reflect->getConstants());
+        }
 
-		return static::$constants;
-	}
+        return static::$constants;
+    }
 }

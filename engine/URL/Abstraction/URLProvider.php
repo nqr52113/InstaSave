@@ -2,14 +2,30 @@
 
 namespace InstaSave\URL\Abstraction;
 
-abstract class URLProvider {
-	public $url;
+abstract class URLProvider
+{
+    /**
+     * The URL that we want to send request.
+     *
+     * @var string
+     */
+    public $absoluteUrl;
 
-	public function __construct(String $url) {
-		$this->absoluteUrl = $url;
+    /**
+     * Constructor of URL.
+     *
+     * @param String $url
+     */
+    public function __construct(String $url) {
+        $this->absoluteUrl = $url;
 
-		$this->validate();
-	}
+        $this->validate();
+    }
 
-	abstract protected function validate();
+    /**
+     * Validate URL and then send Request.
+     *
+     * @return URLValidationException
+     */
+    abstract protected function validate();
 }

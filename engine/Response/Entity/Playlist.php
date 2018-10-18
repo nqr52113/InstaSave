@@ -7,10 +7,16 @@ use InstaSave\Response\Traits\OwnerParser;
 use InstaSave\Response\Traits\ResourceParser;
 use InstaSave\Response\Abstraction\ResponseDecorator;
 
-class Playlist extends ResponseDecorator {
-	use EntityParser, OwnerParser, ResourceParser;
-	
-	public function parse() {
-		return $this->entity()->owner()->resources();
-	}
+class Playlist extends ResponseDecorator
+{
+    use EntityParser, OwnerParser, ResourceParser;
+    
+    /**
+     * Parse object that comes from Instagram Response to Playlist Object.
+     *
+     * @return Playlist
+     */
+    public function parse() {
+        return $this->entity()->owner()->resources();
+    }
 }

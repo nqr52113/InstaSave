@@ -7,23 +7,49 @@ use InstaSave\URL\Abstraction\URLProvider;
 use InstaSave\Client\Abstraction\ClientProvider;
 use InstaSave\Response\Provider\EntityCollector;
 
-class InstaSave {
-	
-	private $url;
+class InstaSave
+{
+    /**
+     * URL that we want to get the Response.
+     *
+     * @var URLProvider
+     */
+    private $url;
 
-	private $client;
+    /**
+     * The Footman Client which send request to Instagram.
+     *
+     * @var Alshf\Footman
+     */
+    private $client;
 
-	public function __construct(URLProvider $url, ClientProvider $client = null) {
-		$this->url = $url;
+    /**
+     * Instasave Constructor.
+     *
+     * @param URLProvider         $url
+     * @param ClientProvider|null $client
+     */
+    public function __construct(URLProvider $url, ClientProvider $client = null) {
+        $this->url = $url;
 
-		$this->client = $client ?: new Client($this->url);
-	}
+        $this->client = $client ?: new Client($this->url);
+    }
 
-	public function fetch() {
-		$provider = new EntityCollector($this->client->send());
+    /**
+     * Send Request and Fetch the result as a response string.
+     *
+     * @return InstaSave\Response\Contract\Response
+     */
+    public function fetch() {
+        // Create an EntityCollector from response String and find the JSON and then Parse it as
+        // a Object and store it in Entity Collector in "entity" property.
+        // It also find the Respnse type [User, Playlist, Feed, IGTV]
+        $provider = new EntityCollector($this->client->send());
 
-		$class = 'InstaSave\\Response\\Entity\\' . ucfirst($provider->type);
+        // Create a class from the provider (EntityCollector) and make a Response Entity Object from it
+        $class = 'InstaSave\\Response\\Entity\\' . ucfirst($provider->type);
 
-		return (new $class($provider))->parse();
-	}
+        // Now parse Provider (EntityCollector) "entity" property to Response Entity Object
+        return (new $class($provider))->parse();
+    }
 }
