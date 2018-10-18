@@ -39,7 +39,8 @@ class Owner
      *
      * @param Collector $owner
      */
-    public function __construct(Collector $owner) {
+    public function __construct(Collector $owner)
+    {
         $this->id = $owner->getId();
         $this->username = $owner->getUsername();
         $this->fullname = $owner->getFullName();

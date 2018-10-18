@@ -15,11 +15,12 @@ trait OwnerParser
     public $owner;
 
     /**
-     * Fill Owner of the Entity
+     * Fill Owner of the Entity.
      *
      * @return InstaSave\Response\Abstraction\ResponseDecorator
      */
-    private function owner() {
+    private function owner()
+    {
         $owner = $this->provider->getOwner() ?: $this->provider->entity;
 
         $this->owner = new Owner(new ModelCollector($owner));

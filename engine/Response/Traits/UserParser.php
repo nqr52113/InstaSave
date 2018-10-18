@@ -35,7 +35,7 @@ trait UserParser
     /**
      * Verifed user on instagram?
      *
-     * @var boolean
+     * @var bool
      */
     public $isVerified;
 
@@ -44,7 +44,8 @@ trait UserParser
      *
      * @return InstaSave\Response\Abstraction\ResponseDecorator
      */
-    private function user() {
+    private function user()
+    {
         $this->type = $this->provider->type;
         $this->biography = $this->provider->getBiography();
         $this->followedBy = $this->provider->get('edgeFollowedBy.count');

@@ -2,8 +2,8 @@
 
 namespace InstaSave\Exception;
 
-use \Exception;
+use Exception;
 
-class URLValidationException extends Exception 
+class URLValidationException extends Exception
 {
 }

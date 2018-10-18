@@ -1,23 +1,25 @@
 <?php
 
-use InstaSave\URL\URL;
+use Alshf\Exceptions\FootmanRequestException;
+use InstaSave\Enumeration\Entity;
+use InstaSave\Enumeration\Resource;
+use InstaSave\Exception\ClientException;
+use InstaSave\Exception\ResponseException;
+use InstaSave\Exception\URLValidationException;
 use InstaSave\InstaSave;
-use InstaSave\Response\Model\Owner;
-use InstaSave\Response\Model\Dimension;
-use InstaSave\Response\Entity\User;
 use InstaSave\Response\Entity\Feed;
 use InstaSave\Response\Entity\IGTV;
 use InstaSave\Response\Entity\Playlist;
-use InstaSave\Enumeration\Entity;
-use InstaSave\Enumeration\Resource;
-use InstaSave\Exception\URLValidationException;
-use InstaSave\Exception\ResponseException;
-use InstaSave\Exception\ClientException;
-use Alshf\Exceptions\FootmanRequestException;
+use InstaSave\Response\Entity\User;
+use InstaSave\Response\Model\Dimension;
+use InstaSave\Response\Model\Owner;
+use InstaSave\URL\URL;
 use PHPUnit\Framework\TestCase;
 
-final class InstaSaveTest extends TestCase {
-    public function testProfilePicture() {
+final class InstaSaveTest extends TestCase
+{
+    public function testProfilePicture()
+    {
         try {
             $instaSave = new InstaSave(new URL('https://www.instagram.com/9gag/'));
             $response = $instaSave->fetch();
@@ -39,7 +41,7 @@ final class InstaSaveTest extends TestCase {
             $this->assertEquals($response->type, Entity::user);
             $this->assertNotEmpty($response->followedBy);
             $this->assertNotEmpty($response->follow);
-            
+
             $this->assertInstanceOf(Owner::class, $response->owner);
             $this->assertObjectHasAttribute('id', $response->owner);
             $this->assertObjectHasAttribute('username', $response->owner);
@@ -64,7 +66,8 @@ final class InstaSaveTest extends TestCase {
     /**
      * @dataProvider urlProvider
      */
-    public function testFeeds($type, $url) {
+    public function testFeeds($type, $url)
+    {
         try {
             $instaSave = new InstaSave(new URL($url));
             $response = $instaSave->fetch();
@@ -74,19 +77,19 @@ final class InstaSaveTest extends TestCase {
                 case 'playlist':
                     $this->assertInstanceOf(Playlist::class, $response);
                     break;
-                
+
                 case 'feed':
                     $this->assertInstanceOf(Feed::class, $response);
                     break;
 
                 case 'igtv':
                     $this->assertInstanceOf(IGTV::class, $response);
-                    break;  
+                    break;
                 default:
                     throw new Exception('Undefined Type provides for instagram url.');
                     break;
             }
-                
+
             $this->assertObjectHasAttribute('id', $response);
             $this->assertObjectHasAttribute('type', $response);
             $this->assertObjectHasAttribute('shortcode', $response);
@@ -189,7 +192,8 @@ final class InstaSaveTest extends TestCase {
         }
     }
 
-    public function testInvalidUrl() {
+    public function testInvalidUrl()
+    {
         try {
             new URL('https://www.notValidURL.com/');
         } catch (Exception $e) {
@@ -197,7 +201,8 @@ final class InstaSaveTest extends TestCase {
         }
     }
 
-    public function testStoriesNoResponse() {
+    public function testStoriesNoResponse()
+    {
         try {
             $url = new URL('https://www.instagram.com/stories/instagram/');
             $instaSave = new InstaSave($url);
@@ -207,7 +212,8 @@ final class InstaSaveTest extends TestCase {
         }
     }
 
-    public function testPrivateFeedNoResponse() {
+    public function testPrivateFeedNoResponse()
+    {
         try {
             $url = new URL('https://www.instagram.com/p/gVcI2cpv84TBEnMGPZQqYAdHUSbVDHm_AKtVE0');
             $instaSave = new InstaSave($url);
@@ -217,7 +223,8 @@ final class InstaSaveTest extends TestCase {
         }
     }
 
-    public function test404() {
+    public function test404()
+    {
         try {
             $url = new URL('https://www.instagram.com/some404UrlThatDoesntExist/');
             $instaSave = new InstaSave($url);
@@ -230,33 +237,34 @@ final class InstaSaveTest extends TestCase {
         }
     }
 
-    public function urlProvider() {
+    public function urlProvider()
+    {
         return [
             [
                 // Picture
                 'type' => Entity::playlist,
-                'url' => 'https://www.instagram.com/p/BoHk1haB5tM/'
+                'url'  => 'https://www.instagram.com/p/BoHk1haB5tM/',
             ],
             [
                 // Video
                 'type' => Entity::playlist,
-                'url' => 'https://www.instagram.com/p/Bn9URMGjWJG/'
+                'url'  => 'https://www.instagram.com/p/Bn9URMGjWJG/',
             ],
             [
                 // Image
                 'type' => Entity::feed,
-                'url' => 'https://www.instagram.com/p/BoaOrTsBIvm/'
+                'url'  => 'https://www.instagram.com/p/BoaOrTsBIvm/',
             ],
             [
                 // Video
                 'type' => Entity::feed,
-                'url' => 'https://www.instagram.com/p/BnXQqMvDIMs/'
+                'url'  => 'https://www.instagram.com/p/BnXQqMvDIMs/',
             ],
             [
                 // IGTV
                 'type' => Entity::igtv,
-                'url' => 'https://www.instagram.com/tv/BkQjCfsBIzi/'
-            ]
+                'url'  => 'https://www.instagram.com/tv/BkQjCfsBIzi/',
+            ],
         ];
     }
 }

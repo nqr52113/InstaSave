@@ -2,15 +2,15 @@
 
 namespace InstaSave\Response\Abstraction;
 
-use JsonSerializable;
 use InstaSave\Response\Contract\Response;
+use JsonSerializable;
 
 abstract class ResponseDecorator implements Response, JsonSerializable
 {
     /**
      * Contains Response Provider Collector like EntityCollector,
      * These Collector must use Response Contract.
-     * 
+     *
      * @var Response
      */
     protected $provider;
@@ -20,7 +20,8 @@ abstract class ResponseDecorator implements Response, JsonSerializable
      *
      * @param Response $provider
      */
-    public function __construct(Response $provider) {
+    public function __construct(Response $provider)
+    {
         $this->provider = $provider;
     }
 
@@ -29,7 +30,8 @@ abstract class ResponseDecorator implements Response, JsonSerializable
      *
      * @return ResponseDecorator
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return $this;
     }
 

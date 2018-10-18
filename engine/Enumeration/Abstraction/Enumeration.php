@@ -11,18 +11,19 @@ abstract class Enumeration
      *
      * @var Illuminate\Support\Collection
      */
-    static protected $constants;
+    protected static $constants;
 
     /**
      * Get value of the Enum.
      *
-     * @param  string $key
+     * @param string $key
      *
      * @return string
      */
-    static public function valueOf($key) {
+    public static function valueOf($key)
+    {
         if (!static::isValidKey($key)) {
-            return null;
+            return;
         }
 
         return self::getConstants()->get($key);
@@ -31,13 +32,14 @@ abstract class Enumeration
     /**
      * Get Enum name of the Value.
      *
-     * @param  string $value
+     * @param string $value
      *
      * @return string
      */
-    static public function keyOf($value) {
+    public static function keyOf($value)
+    {
         if (!static::isValidValue($value)) {
-            return null;
+            return;
         }
 
         return self::getConstants()->search($value, true);
@@ -46,22 +48,24 @@ abstract class Enumeration
     /**
      * Check this Enum exist.
      *
-     * @param  string  $key
+     * @param string $key
      *
-     * @return boolean
+     * @return bool
      */
-    static public function isValidKey($key) {
+    public static function isValidKey($key)
+    {
         return self::getConstants()->has($key);
     }
 
     /**
      * Check this value exist in Enums.
-     * 
-     * @param  string  $value
      *
-     * @return boolean
+     * @param string $value
+     *
+     * @return bool
      */
-    static public function isValidValue($value) {
+    public static function isValidValue($value)
+    {
         return self::getConstants()->containsStrict($value);
     }
 
@@ -70,7 +74,8 @@ abstract class Enumeration
      *
      * @return Illuminate\Support\Collection
      */
-    static private function getConstants() {
+    private static function getConstants()
+    {
         if (!static::$constants) {
             // Get all Constants with Reflection
             $reflect = new ReflectionClass(static::class);
