@@ -8,7 +8,7 @@ use InstaSave\Exception\ResponseException;
 use InstaSave\Exception\URLValidationException;
 use InstaSave\InstaSave;
 use InstaSave\Response\Entity\Feed;
-use InstaSave\Response\Entity\IGTV;
+use InstaSave\Response\Entity\Igtv;
 use InstaSave\Response\Entity\Playlist;
 use InstaSave\Response\Entity\User;
 use InstaSave\Response\Model\Dimension;
@@ -83,7 +83,7 @@ final class InstaSaveTest extends TestCase
                     break;
 
                 case 'igtv':
-                    $this->assertInstanceOf(IGTV::class, $response);
+                    $this->assertInstanceOf(Igtv::class, $response);
                     break;
                 default:
                     throw new Exception('Undefined Type provides for instagram url.');
@@ -261,7 +261,7 @@ final class InstaSaveTest extends TestCase
                 'url'  => 'https://www.instagram.com/p/BnXQqMvDIMs/',
             ],
             [
-                // IGTV
+                // Igtv
                 'type' => Entity::igtv,
                 'url'  => 'https://www.instagram.com/tv/BkQjCfsBIzi/',
             ],

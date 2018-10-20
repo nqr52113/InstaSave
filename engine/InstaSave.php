@@ -45,7 +45,7 @@ class InstaSave
     {
         // Create an EntityCollector from response String and find the JSON and then Parse it as
         // a Object and store it in Entity Collector in "entity" property.
-        // It also find the Respnse type [User, Playlist, Feed, IGTV]
+        // It also find the Respnse type [User, Playlist, Feed, Igtv]
         $provider = new EntityCollector($this->client->send());
 
         // Create a class from the provider (EntityCollector) and make a Response Entity Object from it

@@ -7,14 +7,14 @@ use InstaSave\Response\Traits\EntityParser;
 use InstaSave\Response\Traits\OwnerParser;
 use InstaSave\Response\Traits\ResourceParser;
 
-class IGTV extends ResponseDecorator
+class Igtv extends ResponseDecorator
 {
     use EntityParser, OwnerParser, ResourceParser;
 
     /**
-     * Parse object that comes from Instagram Response to IGTV Object.
+     * Parse object that comes from Instagram Response to Igtv Object.
      *
-     * @return IGTV
+     * @return Igtv
      */
     public function parse()
     {
