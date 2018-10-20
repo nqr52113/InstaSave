@@ -6,7 +6,7 @@
     "homepage": "https://github.com/alshf89/footman",
     "require": {
         "php": ">=7.0",
-        "illuminate/support": "^5.6",
+        "illuminate/support": "^5.5",
         "symfony/dom-crawler": "^3.4",
         "symfony/css-selector": "^3.4",
         "alshf/footman": "^1.4"
