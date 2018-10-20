@@ -182,8 +182,8 @@ final class InstaSaveTest extends TestCase
                     $this->assertInternalType('int', $resource->views);
 
                     $this->assertNotEmpty($resource->video);
-                    $this->assertGreaterThanOrEqual(0, $response->duration);
-                    $this->assertGreaterThanOrEqual(0, $response->views);
+                    $this->assertGreaterThanOrEqual(0, $resource->duration);
+                    $this->assertGreaterThanOrEqual(0, $resource->views);
                     $this->assertContains('.mp4', $resource->video);
                 }
             }
