@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/alshf89/InstaSave.svg?branch=master)](https://travis-ci.org/alshf89/Instasave)
 [![Latest Stable Version](https://poser.pugx.org/alshf/Instasave/version)](https://packagist.org/packages/alshf/Instasave)
 
-# InstaSave :metal: :octocat: :sparkles:
+# InstaSave :metal: :sparkles: :camera: :computer:
 
 You can fetch all resources from instagram and download them with your program. At least PHP 7.0 is required.
 
@@ -66,9 +66,9 @@ ___
 
 #### Response
 
-After you get the Response by calling _fetch()_ method on InstaSave object, it will bring you the Response Entity which it is instance of Entity (**Playlist**, **Feed**, **Igtv**, **User**) in _Instasave\Response\Entity_ folder.
+After you get the Response by calling _fetch()_ method on InstaSave object, it will bring you the Response Entity which it is instance of Entity (**Playlist**, **Feed**, **Igtv**, **User**) in _Instasave\\Response\\Entity_ folder.
 
-These response has a _type_ property that you can compare it with _InstaSave\Enumeration\Entity_.
+These response has a _type_ property that you can compare it with _InstaSave\\Enumeration\\Entity_.
 
 ```PHP
 use InstaSave\Enumeration\Entity;
@@ -127,7 +127,7 @@ $response->owner->avator;
 ##### Resources Property
 
 Contains array of ressources (**Image**, **Video**) which blongs to the entity.
-This property also has a _type_ property that you can compare it with _InstaSave\Enumeration\Resource_.
+This property also has a _type_ property that you can compare it with _InstaSave\\Enumeration\\Resource_.
 
 ```PHP
 use InstaSave\Enumeration\Resource;
@@ -159,9 +159,9 @@ ___
 
 You can get URL validation Errors with **URLValidationException** but if you want to get request errors like connection error, Server errors like 5xx or 4xx errors you can catch them with **ClientException**, you can also catch Response errors with **ResponseException**.
 
-- **URLValidationException**: When URL string pass into InstaSave\URL\URL class if it doesn't validate it will throw exception.
+- **URLValidationException**: When URL string pass into InstaSave\\URL\\URL class if it doesn't validate it will throw exception.
 - **ResponseException**: When we dont have any response or error on parsing response this exception will throw.
-- **ClientException**: Connection Errors, 4xx, 5xx will handle with this exception this exception has previous exception which it comes from _Alshf\Exceptions\FootmanRequestException_.
+- **ClientException**: Connection Errors, 4xx, 5xx will handle with this exception this exception has previous exception which it comes from _Alshf\\Exceptions\\FootmanRequestException_.
 
 ```PHP
 use InstaSave\URL\URL;
