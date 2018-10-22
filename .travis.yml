@@ -4,8 +4,8 @@ php:
   - 7.0
 
 install:
-   - composer require illuminate/support:^5.5
-   - composer require symfony/dom-crawler:^3.4
-   - composer require symfony/css-selector:^3.4
+   - composer require illuminate/support:5.5.*
+   - composer require symfony/dom-crawler:3.4.*
+   - composer require symfony/css-selector:3.4.*
    - composer require alshf/footman:^1.4
    - php vendor/autoload.php

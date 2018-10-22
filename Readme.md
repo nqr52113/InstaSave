@@ -9,7 +9,7 @@ You can fetch all resources from instagram and download them with your program. 
 
 InstaSave support public **feeds**, it also support **playlist**, **IGTV** and **HQ** users profile pictures as well.
 
-## Documentation
+## #Documentation
 
  - [Installation](#installation)
     - [Basic Setup](#basic-setup)
@@ -21,18 +21,18 @@ InstaSave support public **feeds**, it also support **playlist**, **IGTV** and *
  - [Credits](#credits)
  - [License](#license)
 
-### Installation
+### #Installation
 
 InstaSave uses [Composer](http://getcomposer.org/doc/00-intro.md#installation-nix) to make things easy.
 Composer is a dependency management tool for PHP that allows you to declare the dependencies your project needs and installs them into your project.
 
-#### Basic Setup
+#### #Basic Setup
 
 Learn to use composer and run this command line:
 
     composer require alshf/instasave
 
-### How to use
+### #How to use
 
 Make sure you have composer's autoload file included
 
@@ -40,7 +40,7 @@ Make sure you have composer's autoload file included
 require 'vendor/autoload.php';
 ```
 
-#### Example
+#### #Example
 
 ```PHP
 use InstaSave\URL\URL;
@@ -64,7 +64,7 @@ try {
 ```
 ___
 
-#### Response
+#### #Response
 
 After you get the Response by calling _fetch()_ method on InstaSave object, it will bring you the Response Entity which it is instance of Entity (**Playlist**, **Feed**, **Igtv**, **User**) in _Instasave\\Response\\Entity_ folder.
 
@@ -102,7 +102,7 @@ $response->resources;
 
 You can also check response tree in [InstaSave\Response\Sample\Parsed](https://github.com/alshf89/InstaSave/tree/master/engine/Response/Sample/Parsed) folder.
 
-##### Owner Property
+##### #Owner Property
 
 This node contains information about the owner of entity.
 
@@ -113,7 +113,7 @@ $response->owner->fullname;
 $response->owner->avator;
 ```
 
-##### Dimension Property
+##### #Dimension Property
 
 Contains entity dimensions, note that **resources** property also has dimensions property.
 
@@ -124,7 +124,7 @@ $response->owner->fullname;
 $response->owner->avator;
 ```
 
-##### Resources Property
+##### #Resources Property
 
 Contains array of ressources (**Image**, **Video**) which blongs to the entity.
 This property also has a _type_ property that you can compare it with _InstaSave\\Enumeration\\Resource_.
@@ -155,7 +155,7 @@ $response->resources[0]->views;
 
 ___
 
-#### Exceptions
+#### #Exceptions
 
 You can get URL validation Errors with **URLValidationException** but if you want to get request errors like connection error, Server errors like 5xx or 4xx errors you can catch them with **ClientException**, you can also catch Response errors with **ResponseException**.
 
@@ -184,14 +184,14 @@ try {
 ```
 For more information check [UnitTest](https://github.com/alshf89/InstaSave/blob/master/tests/InstaSaveTest.php) file.
 
-### Contributing
+### #Contributing
 
 Bugs and feature request are tracked on [GitHub](https://github.com/alshf89/Instasave/issues).
 
-### Credits
+### #Credits
 
 The code on which this package is principally developed and maintained by [Ali Shafiee](https://github.com/alshf89).
 
-### License
+### #License
 
 InstaSave package is released under [MIT](LICENSE.txt).
