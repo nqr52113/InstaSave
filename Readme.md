@@ -1,6 +1,6 @@
 [![License](https://poser.pugx.org/alshf/Instasave/license)](https://packagist.org/packages/alshf/Instasave)
 [![Total Downloads](https://poser.pugx.org/alshf/Instasave/downloads)](https://packagist.org/packages/alshf/Instasave)
-[![Build Status](https://travis-ci.org/alshf89/InstaSave.svg?branch=master)](https://travis-ci.org/alshf89/Instasave)
+[![Build Status](https://travis-ci.org/alshf89/InstaSave.svg?branch=master)](https://travis-ci.org/alshf89/InstaSave)
 [![Latest Stable Version](https://poser.pugx.org/alshf/Instasave/version)](https://packagist.org/packages/alshf/Instasave)
 
 # InstaSave :metal: :sparkles: :camera: :computer:
