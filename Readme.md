@@ -32,6 +32,8 @@ Learn to use composer and run this command line:
 
     composer require alshf/instasave
 
+___
+
 ### #How to use
 
 Make sure you have composer's autoload file included
@@ -62,7 +64,6 @@ try {
     echo $e->getMessage();
 }
 ```
-___
 
 #### #Response
 
@@ -153,8 +154,6 @@ $response->resources[0]->views;
 ```
 **NOTE:** duration Property will be _0_ on Playlist Entity.
 
-___
-
 #### #Exceptions
 
 You can get URL validation Errors with **URLValidationException** but if you want to get request errors like connection error, Server errors like 5xx or 4xx errors you can catch them with **ClientException**, you can also catch Response errors with **ResponseException**.
@@ -184,13 +183,19 @@ try {
 ```
 For more information check [UnitTest](https://github.com/alshf89/InstaSave/blob/master/tests/InstaSaveTest.php) file.
 
+___
+
 ### #Contributing
 
 Bugs and feature request are tracked on [GitHub](https://github.com/alshf89/Instasave/issues).
 
+___
+
 ### #Credits
 
 The code on which this package is principally developed and maintained by [Ali Shafiee](https://github.com/alshf89).
+
+___
 
 ### #License
 
